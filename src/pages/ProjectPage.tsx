@@ -20,8 +20,8 @@ const projects: Project[] = [
   {
     id: 1,
     title: "10KVA Off-grid Solar System in Matuu",
-    image: "/src/assets/solar-roof.jpg",
-    image2: "/src/assets/10kva.png",
+    image: "/static/images/solar-roof.jpg",
+    image2: "/static/images/10kva.png",
     location: "Matuu, Machakos County",
     description:
       "This project involved the installation of a 10KVA off-grid solar system.",
@@ -30,8 +30,8 @@ const projects: Project[] = [
   {
     id: 2,
     title: "2kW Off-Grid Solar System in Uganda",
-    image: "/src/assets/solar-battery.jpeg",
-    image2: "/src/assets/davis-solar.jpeg",
+    image: "/static/images/solar-battery.jpeg",
+    image2: "/static/images/davis-solar.jpeg",
     location: "Uganda",
     description:
       "A 2kW off-grid solar system installed to provide sustainable energy.",
@@ -39,8 +39,8 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Borehole Pump Maintenance, Kitui",
-    image: "/src/assets/borehole-install.png",
-    image2: "/src/assets/borehole-install-2.png",
+    image: "/static/images/borehole-install.png",
+    image2: "/static/images/borehole-install-2.png",
     location: "Kitui",
     description:
       "Maintenance of a borehole pump to ensure continuous water supply."
@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     id: 4,
     title: "Borehole Solarization, Mandera",
-    image: "/src/assets/mandera.png",
+    image: "/static/images/mandera.png",
     location: "Mandera",
     description:
       "Borehole Solarization in Mandera.",

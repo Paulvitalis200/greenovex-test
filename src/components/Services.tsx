@@ -14,7 +14,7 @@ Greenovex employs the leading technologies in water treatment and water 
 provide the highest possible water quality from your available sources. Our water treatment
 solutions are customized to your specific needs with processes such as
 Reverse Osmosis, water softening, disinfection, and filtration systems.`,
-    image: "src/assets/borehole.jpg",
+    image: "/static/images/borehole.jpg",
   },
   {
     name: "Water Pumping",
@@ -25,7 +25,7 @@ areas. Greenovex offers a wide range of customized water pumping solutio
 irrigation, industrial applications, and domestic and municipal supply. The pumps can be
 powered by different sources of power depending on availability and cost-effectiveness, i.e.,
 solar, electricity, diesel, and even hand.`,
-    image: "src/assets/borehole.webp",
+    image: "/static/images/borehole.webp",
   },
   {
     name: "Borehole Services",
@@ -35,7 +35,7 @@ solar, electricity, diesel, and even hand.`,
 and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works,
 Consultation, project supervision, and contracting) that meet International Standards, using
 modern technology.`,
-    image: "src/assets/borehole-install.png",
+    image: "/static/images/borehole-install.png",
   },
   {
     name: "Solar Power",
@@ -45,7 +45,7 @@ modern technology.`,
 provide sustainable power. Our solar lighting systems, solar street lighting, power backup
 systems, and solar water heating systems provide this solution for domestic, community, and
 industrial applications.`,
-    image: "src/assets/solar-service.jpg",
+    image: "/static/images/solar-service.jpg",
     classes: ""
   },
 ];

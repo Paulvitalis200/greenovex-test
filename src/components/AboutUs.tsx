@@ -32,7 +32,7 @@ const AboutUs: React.FC = () => {
         {/* Image with Green Overlay */}
         <div className="relative w-full h-[200px] md:h-[400px] rounded-lg">
           <img
-            src="src/assets/image1.webp"
+            src="/static/images/image1.webp"
             alt="Completion Rate"
             className="w-full h-full object-center rounded-lg"
           />
@@ -82,7 +82,7 @@ const AboutUs: React.FC = () => {
         {/* Second Image */}
         <div className=" h-[152px] mt-4  md:mt-0 rounded-[6px] md:rounded-[10px] md:w-full md:h-[400px]">
           <img
-            src="src/assets/solar.webp"
+            src="/static/images/solar.webp"
             alt="Solar Panel Installation"
             className="w-full h-full object-cover object-center rounded-lg"
           />

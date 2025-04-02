@@ -5,14 +5,14 @@ const teamMembers = [
   {
     name: "Davis Usenge",
     role: "Co-Founder, Engineer",
-    image: "../src/assets/profile.webp",
+    image: "/static/images/profile.webp",
     about:
       "David Usenge is a seasoned engineer with years of experience helping new team members and all.",
   },
   {
     name: "Jane Doe",
     role: "Designer",
-    image: "src/assets/profile.webp",
+    image: "/static/images/profile.webp",
     about:
       "Jane Doe is a creative designer with a passion for modern aesthetics.",
   },
