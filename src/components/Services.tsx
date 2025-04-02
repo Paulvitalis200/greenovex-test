@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaTools, FaSolarPanel } from "react-icons/fa";
 import { PiEngineFill } from "react-icons/pi";
 import { GiWaterRecycling } from "react-icons/gi";
-import { FaCircleCheck } from "react-icons/fa6";
 import NavigationBar from "./NavigationBar";
 
 const services = [

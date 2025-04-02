@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import NavigationBar from "./NavigationBar";
 import Modal from "react-modal";
 
@@ -80,7 +78,6 @@ engineering, driving positive change in Kenya, East Africa and beyond.`
 
 const TeamSection: React.FC = () => {
   const teamRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate(); // Initialize useNavigate
   const [activeIndex, ] = useState<number | null>(null);
 
     const [isOpen, setIsOpen] = useState(false)

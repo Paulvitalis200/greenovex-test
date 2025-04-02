@@ -3,9 +3,7 @@ import background from "../assets/hero.webp";
 import { FaArrowRightLong } from "react-icons/fa6";
 import NavigationBar from "../components/NavigationBar";
 import Logo from "../components/Logo";
-import CheckCircle from "../components/CheckCircle";
 import gsap from "gsap";
-import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   const elementsRef = useRef<(HTMLElement | null)[]>([]);
