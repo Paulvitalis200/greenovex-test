@@ -14,7 +14,7 @@ Greenovex employs the leading technologies in water treatment and water 
 provide the highest possible water quality from your available sources. Our water treatment
 solutions are customized to your specific needs with processes such as
 Reverse Osmosis, water softening, disinfection, and filtration systems.`,
-    image: "/static/images/borehole.jpg",
+    image: "/static/images/borehole-2.webp",
   },
   {
     name: "Water Pumping",
@@ -35,7 +35,7 @@ solar, electricity, diesel, and even hand.`,
 and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works,
 Consultation, project supervision, and contracting) that meet International Standards, using
 modern technology.`,
-    image: "/static/images/borehole-install.png",
+    image: "/static/images/borehole-install.webp",
   },
   {
     name: "Solar Power",
@@ -45,7 +45,7 @@ modern technology.`,
 provide sustainable power. Our solar lighting systems, solar street lighting, power backup
 systems, and solar water heating systems provide this solution for domestic, community, and
 industrial applications.`,
-    image: "/static/images/solar-service.jpg",
+    image: "/static/images/solar-service.webp",
     classes: ""
   },
 ];

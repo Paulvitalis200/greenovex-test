@@ -11,22 +11,22 @@ const projects = [
   {
     id: 1,
     title: "10KVA Off-grid Solar System in Matuu",
-    image: "/static/images/solar-roof.jpg",
+    image: "/static/images/solar-roof.webp",
   },
   {
     id: 2,
     title: "2kW Off-Grid Solar System in Uganda",
-    image: "/static/images/solar-battery.jpeg",
+    image: "/static/images/solar-battery.webp",
   },
   {
     id: 3,
     title: "Borehole Pump Maintenance, Kitui",
-    image: "/static/images/borehole-install.png",
+    image: "/static/images/borehole-install.webp",
   },
   {
     id: 4,
     title: "Borehole Solarization, Mandera",
-    image: "/static/images/mandera.png",
+    image: "/static/images/mandera.webp",
   },
   // {
   //   id: 5,
