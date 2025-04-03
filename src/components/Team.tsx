@@ -24,22 +24,22 @@ const teamMembers: TeamMember[] = [
     image: "static/images/davis.webp",
     about: "Davis Usenge holds a Bachelor’s Degree in Environmental and Biosystems Engineering...",
     aboutFullText: `Davis Usenge holds a Bachelor’s Degree in Environmental and Biosystems Engineering
-from the University of Nairobi and MSc in Project Planning and Management from
-Kampala International University. With a strong background in biological wastewater
-treatment, electro-mechanical systems, and renewable energy, Davis has been
-instrumental in driving forward environmentally friendly technologies that create
-lasting impact.
-Davis has also contributed to large-scale infrastructure projects, including his work on a
-World Bank-funded initiative in Uganda, on improving access to renewable energy and
-solar powered irrigation, where he gained valuable experience in implementing
-sustainable engineering solutions at an international level. His leadership at Greenovex
-Solutions is driven by a passion for innovation, efficiency, and environmental
-conservation. Under his guidance, the company continues to develop cutting-edge
-solutions that address pressing environmental and industrial challenges. Through
-Greenovex, He is committed to fostering sustainable development, improving access to
-clean water, and promoting green energy solutions that benefit communities and
-industries alike. His vision is to position Greenovex as a leader in sustainable
-engineering, driving positive change in Kenya, East Africa and beyond.`
+      from the University of Nairobi and MSc in Project Planning and Management from
+      Kampala International University. With a strong background in biological wastewater
+      treatment, electro-mechanical systems, and renewable energy, Davis has been
+      instrumental in driving forward environmentally friendly technologies that create
+      lasting impact.
+      Davis has also contributed to large-scale infrastructure projects, including his work on a
+      World Bank-funded initiative in Uganda, on improving access to renewable energy and
+      solar powered irrigation, where he gained valuable experience in implementing
+      sustainable engineering solutions at an international level. His leadership at Greenovex
+      Solutions is driven by a passion for innovation, efficiency, and environmental
+      conservation. Under his guidance, the company continues to develop cutting-edge
+      solutions that address pressing environmental and industrial challenges. Through
+      Greenovex, He is committed to fostering sustainable development, improving access to
+      clean water, and promoting green energy solutions that benefit communities and
+      industries alike. His vision is to position Greenovex as a leader in sustainable
+      engineering, driving positive change in Kenya, East Africa and beyond.`
   },
   {
     id: 2,
@@ -152,7 +152,7 @@ const TeamSection: React.FC = () => {
             </div>
            
         </Modal>}
-    <section id="team" className="min-h-[70vh] p-10 py-20 md:p-16 lg:py-20 lg:px-24 gap-2 flex flex-col bg-[#30BD32]">
+    <section id="team" className="min-h-[70vh] p-10 py-24 md:p-16 lg:py-20 lg:px-24 gap-2 flex flex-col bg-[#30BD32]">
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>

@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
   );
 
   return (
-    <section id="projects" className="min-h-[70vh] py-20 px-10 md:px-16 lg:px-24 font-raleway">
+    <section id="projects" className="min-h-[70vh] py-24 px-10 md:px-16 lg:px-24 font-raleway">
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>

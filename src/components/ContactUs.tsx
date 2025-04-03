@@ -7,7 +7,7 @@ const ContactUs: React.FC = () => {
   return (
     <section
       id="contact"
-      className="min-h-[70vh] flex flex-col w-full bg-white text-black py-6 px-10 lg:py-19 md:px-24 font-raleway"
+      className="min-h-[70vh] flex flex-col w-full bg-white text-black py-24 px-10 lg:py-19 md:px-24 font-raleway"
     >
       <NavigationBar />
       <div className="flex flex-col justify-between mb-12">

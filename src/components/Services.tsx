@@ -9,22 +9,22 @@ const services = [
     name: "Water Treatment",
     icon: <GiWaterRecycling />,
     description:
-      `Water portability is among the causes of water scarcity in some parts of the world.
-Greenovex employs the leading technologies in water treatment and water purification to
-provide the highest possible water quality from your available sources. Our water treatment
-solutions are customized to your specific needs with processes such as
-Reverse Osmosis, water softening, disinfection, and filtration systems.`,
+        `Water portability is among the causes of water scarcity in some parts of the world.
+        Greenovex employs the leading technologies in water treatment and water purification to
+        provide the highest possible water quality from your available sources. Our water treatment
+        solutions are customized to your specific needs with processes such as
+        Reverse Osmosis, water softening, disinfection, and filtration systems.`,
     image: "/static/images/borehole-2.webp",
   },
   {
     name: "Water Pumping",
     icon: <PiEngineFill />,
     description:
-      `Africa’s major challenge that leads to low quality of life is water scarcity, especially in off-grid
-areas. Greenovex offers a wide range of customized water pumping solutions for water supply,
-irrigation, industrial applications, and domestic and municipal supply. The pumps can be
-powered by different sources of power depending on availability and cost-effectiveness, i.e.,
-solar, electricity, diesel, and even hand.`,
+      `Africa’s major challenge that leads to low quality of life is water scarcity, especially in off-grid
+      areas. Greenovex offers a wide range of customized water pumping solutions for water supply,
+      irrigation, industrial applications, and domestic and municipal supply. The pumps can be
+      powered by different sources of power depending on availability and cost-effectiveness, i.e.,
+      solar, electricity, diesel, and even hand.`,
     image: "/static/images/borehole.webp",
   },
   {
@@ -32,19 +32,19 @@ solar, electricity, diesel, and even hand.`,
     icon: <FaTools />,
     description:
       `To try to bridge the gaps that lead to water scarcity, Greenovex Solutions offers Geophysical
-and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works,
-Consultation, project supervision, and contracting) that meet International Standards, using
-modern technology.`,
+      and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works,
+      Consultation, project supervision, and contracting) that meet International Standards, using
+      modern technology.`,
     image: "/static/images/borehole-install.webp",
   },
   {
     name: "Solar Power",
     icon: <FaSolarPanel />,
     description:
-      `The continent is blessed with abundant solar energy, which provides a great opportunity to
-provide sustainable power. Our solar lighting systems, solar street lighting, power backup
-systems, and solar water heating systems provide this solution for domestic, community, and
-industrial applications.`,
+      `The continent is blessed with abundant solar energy, which provides a great opportunity to
+      provide sustainable power. Our solar lighting systems, solar street lighting, power backup
+      systems, and solar water heating systems provide this solution for domestic, community, and
+      industrial applications.`,
     image: "/static/images/solar-service.webp",
     classes: ""
   },
@@ -56,7 +56,7 @@ const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="min-h-screen flex flex-col bg-[#30BD32] text-white py-15 px-10 md:px-20 lg:px-27 md:py-22 font-raleway"
+      className="min-h-screen flex flex-col bg-[#30BD32] text-white py-25 px-10 md:px-20 lg:px-27 md:py-22 font-raleway"
     >
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
