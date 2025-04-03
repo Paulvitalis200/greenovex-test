@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
     id: 4,
     name: "George Odhiambo",
     role: "Director of Projects",
-    image: "/static/images/profile.webp",
+    image: "/static/images/george.webp",
     about: "George Odhiambo is an experienced solar installer with over 20 years of expertise in the...",
     aboutFullText: `George Odhiambo is an experienced solar installer with over 20 years of expertise in the renewable energy sector. At Greenovex Solutions Limited, he plays a pivotal role in project management and implementation, ensuring seamless execution of solar installations from design to commissioning. George has successfully overseen numerous projects, helping clients transition to reliable and sustainable power solutions. As a key figure in the company, George leads the Project Management division, ensuring that all solar installations are delivered on time, within budget, and according to industry best practices. His leadership, combined with his technical expertise, ensures that every project meets the highest standards of efficiency and reliability.`
   },
