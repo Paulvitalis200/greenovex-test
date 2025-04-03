@@ -31,10 +31,10 @@ const ContactUs: React.FC = () => {
               Mon-Fri from 8 am - 6 pm EAT
             </p>
             <p className="font-raleway text-[14px] md:text-[16px] font-semibold underline underline-offset-8">
-              +25472888839
+            <a href="tel:+25472888839">+25472888839</a>
             </p>
             <p className="font-raleway text-[14px] md:text-[16px] font-semibold underline underline-offset-8">
-              +254727568001
+            <a href="tel:+254727568001">+254727568001</a>
             </p>
           </div>
           <div className="p-4 w-full h-[180px] md:w-[332px] md:h-[274px] flex flex-col justify-between border-2 border-[#36454F] rounded-sm">
@@ -48,7 +48,7 @@ const ContactUs: React.FC = () => {
               Drop us an email
             </p>
             <p className="font-raleway  text-[14px] md:text-[16px] font-semibold underline underline-offset-8">
-             greenovexsolutions@gmail.com
+            <a href="mailto:greenovexsolutions@gmail.com">greenovexsolutions@gmail.com</a>
             </p>
           </div>
           <div className="p-4 w-full h-[180px] md:w-[332px] md:h-[274px] flex flex-col justify-between border-2 border-[#36454F] rounded-sm">
