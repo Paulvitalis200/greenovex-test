@@ -6,7 +6,7 @@ import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="min-h-[20vh] p-8 md:p-8 lg:px-24 flex flex-col items-center font-raleway bg-[#30BD32]">
+    <div className="min-h-[20vh] p-8 md:p-8 lg:px-24 flex flex-col items-center font-raleway bg-[#16A718]">
       <div className="w-full flex md:justify-start gap-80">
         <div className="flex flex-col gap-4 md:gap-8 text-white">
           <img src="/static/images/Greenovex-white.svg" className="w-30 md:w-40"/>

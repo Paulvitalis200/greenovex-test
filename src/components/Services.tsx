@@ -56,7 +56,7 @@ const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="min-h-screen flex flex-col bg-[#30BD32] text-white py-25 px-10 md:px-20 lg:px-27 md:py-22 font-raleway"
+      className="min-h-screen flex flex-col bg-[#16A718] text-white py-25 px-10 md:px-20 lg:px-27 md:py-22 font-raleway"
     >
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />

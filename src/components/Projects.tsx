@@ -71,10 +71,10 @@ const Projects: React.FC = () => {
         </h2>
         <div className="hidden md:flex gap-2">
           <button onClick={scrollPrev}>
-            <HiArrowLeftCircle className="text-[#30BD32] text-[57px]" />
+            <HiArrowLeftCircle className="text-[#16A718] text-[57px]" />
           </button>
           <button onClick={scrollNext}>
-            <HiArrowRightCircle className="text-[#30BD32] text-[57px]" />
+            <HiArrowRightCircle className="text-[#16A718] text-[57px]" />
           </button>
         </div>
       </div>
@@ -100,7 +100,7 @@ const Projects: React.FC = () => {
                         .replace(/\s+/g, "-")
                         .toLowerCase()}`}
                     >
-                      <button className="mt-3 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition cursor-pointer">
+                      <button className="mt-3 bg-[#16A718] text-white px-4 py-2 rounded-md hover:bg-green-700 transition cursor-pointer">
                         Read more
                       </button>
                     </Link>

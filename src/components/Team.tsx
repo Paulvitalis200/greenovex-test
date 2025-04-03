@@ -152,7 +152,7 @@ const TeamSection: React.FC = () => {
             </div>
            
         </Modal>}
-    <section id="team" className="min-h-[70vh] p-10 py-24 md:p-16 lg:py-20 lg:px-24 gap-2 flex flex-col bg-[#30BD32]">
+    <section id="team" className="min-h-[70vh] p-10 py-24 md:p-16 lg:py-20 lg:px-24 gap-2 flex flex-col bg-[#16A718]">
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>
@@ -190,7 +190,7 @@ const TeamSection: React.FC = () => {
                 <p className="hidden md:block font-regular font-raleway md:mt-4  text-[16px] leading-[100%] tracking-[0%] text-white">
                   {member.about} 
                 </p>
-                <button className="bg-white text-[#30BD32] py-1 text-[14px] rounded-xs font-medium mt-2 cursor-pointer font-raleway px-3" onClick={() => handleOpen(member.id)}>Read More</button>
+                <button className="bg-white text-[#16A718] py-1 text-[14px] rounded-xs font-medium mt-2 cursor-pointer font-raleway px-3" onClick={() => handleOpen(member.id)}>Read More</button>
               </div>
               {/* <BsFillArrowUpRightCircleFill
                 className="text-white bg-white rounded-full h-[24px] w-[24px] cursor-pointer transition-transform transform hover:scale-110 md:h-[40px] md:w-[40px] md:mr-8 mb-9 md:hidden"

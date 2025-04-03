@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
           }}
         >
     
-            <button className="bg-[#30BD32] hover:bg-green-600 text-white font-medium rounded-md px-6 py-2 mt-8 md:mt-4 flex items-center gap-2" onClick={scrollToAbout}>
+            <button className="bg-[#16A718] text-white font-medium rounded-md px-6 py-2 mt-8 md:mt-4 flex items-center gap-2 cursor-pointer" onClick={scrollToAbout}>
               <span className="text-lg font-raleway">Get Started</span>
               <FaArrowRightLong className="text-white text-xl" />
             </button>
