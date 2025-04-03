@@ -46,10 +46,10 @@ const Logo = () => {
       ) : (
         // Hero (Big) Logo
         <div className="logo">
-          {/* <h1 className="heading font-raleway text-white text-[40px] md:text-[50px] lg:text-[50px] font-extrabold leading-[100%] tracking-0 mb-6 md:mb-8">
+          <h1 className="heading font-raleway text-white text-[40px] md:text-[50px] lg:text-[50px] font-extrabold leading-[100%] tracking-0 mb-6 md:mb-8">
             LOGO
-          </h1> */}
-          <img src="/static/images/greenovex-green.png" />
+          </h1>
+          {/* <img src="/static/images/greenovex-green.png" /> */}
         </div>
       )}
     </>
