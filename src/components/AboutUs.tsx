@@ -10,11 +10,11 @@ const AboutUs: React.FC = () => {
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>
-      <div className="flex flex-col items-start justify-center mx-auto lg:my-[30px] mb-12 md:px-12">
+      <div className="flex flex-col items-start justify-center mx-auto lg:my-[30px] mb-12 md:px-12 mt-14">
         <p className="uppercase flex justify-items-start text-[16px] font-medium tracking-[0%] leading-[100%] pt-3.5 font-raleway">
           / ABOUT US
         </p>
-        <h2 className="text-lg  lg:text-[40px] lg:font-semibold font-raleway leading-[100%] tracking-[0%] text-left items-center font-raleway md:text-4xl font-semibold mt-12">
+        <h2 className="text-lg  lg:text-[40px] lg:font-semibold leading-[100%] tracking-[0%] text-left items-center font-raleway md:text-4xl font-semibold mt-10">
           We are a leader in Engineering, providing energy solutions and making
           a difference in the community. By facilitating the transition to
           renewable energy, we are helping to reduce reliance on fossil fuels,

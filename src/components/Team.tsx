@@ -118,7 +118,7 @@ const TeamSection: React.FC = () => {
 
   return (
     <>
-           {isOpen && 
+           {isOpen &&
     <Modal isOpen={isOpen}
         onRequestClose={() => handleOpen()}
          className="flex items-center justify-center flex-col font-raleway"
@@ -140,23 +140,23 @@ const TeamSection: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </div>  
+            </div>
             <img
               src={currentSelection?.image}
               alt={currentSelection?.name}
               className=" h-[200px] rounded-xs"
             />
-                <p className="mt-4 mb-4 font-medium">{currentSelection?.name}</p>  
-                <p className="mb-4 text-[#30BD32] font-medium">{currentSelection?.role}</p>  
-                <p className="overflow-auto">{currentSelection?.aboutFullText}</p> 
-            </div>  
+                <p className="mt-4 mb-4 font-medium">{currentSelection?.name}</p>
+                <p className="mb-4 text-[#30BD32] font-medium">{currentSelection?.role}</p>
+                <p className="overflow-auto">{currentSelection?.aboutFullText}</p>
+            </div>
            
         </Modal>}
     <section id="team" className="min-h-[70vh] p-10 py-20 md:p-16 lg:py-20 lg:px-24 gap-2 flex flex-col bg-[#30BD32]">
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>
-      <h2 className="text-[14px] leading-[100%] tracking-[0%] font-medium font-raleway md:text-[16px] text-white">
+      <h2 className="text-[14px] leading-[100%] tracking-[0%] font-medium font-raleway md:text-[16px] text-white mb-5">
         /TEAM
       </h2>
       <h3 className="hidden md:block text-[14px] mt-8 leading-[100%] tracking-[0%] font-semibold md:text-[40px] font-raleway text-white">
@@ -190,7 +190,7 @@ const TeamSection: React.FC = () => {
                 <p className="hidden md:block font-regular font-raleway md:mt-4  text-[16px] leading-[100%] tracking-[0%] text-white">
                   {member.about} 
                 </p>
-                <button className="bg-white text-[#30BD32] px-2 py-1 text-[14px] rounded-xs font-medium mt-2 cursor-pointer font-raleway px-3" onClick={() => handleOpen(member.id)}>Read More</button>
+                <button className="bg-white text-[#30BD32] py-1 text-[14px] rounded-xs font-medium mt-2 cursor-pointer font-raleway px-3" onClick={() => handleOpen(member.id)}>Read More</button>
               </div>
               {/* <BsFillArrowUpRightCircleFill
                 className="text-white bg-white rounded-full h-[24px] w-[24px] cursor-pointer transition-transform transform hover:scale-110 md:h-[40px] md:w-[40px] md:mr-8 mb-9 md:hidden"
