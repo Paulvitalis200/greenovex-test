@@ -95,9 +95,8 @@ const NavigationBar: FC = () => {
         {/* Logo (Hidden on Hero Section in Desktop View) */}
         {!isHeroVisible && (
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <h1 className="text-[30px] font-extrabold font-raleway leading-[100%] tracking-0">
-              LOGO
-            </h1>
+            {/* <Logo /> */}
+            <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
           </div>
         )}
 
@@ -129,9 +128,11 @@ const NavigationBar: FC = () => {
             : "bg-white text-black shadow-xs"
         }`}
       >
-        {/* Logo (Always Visible on Mobile) */}
+        {/* Logo Mobile - Visible after the hero section */}
         <div>
-          <h1 className={`text-[17px] font-extrabold font-raleway`}>LOGO</h1>
+          {!isHeroVisible && 
+          <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
+          }
         </div>
         <div>
           <IoMenu className="w-[24px] h-[26px]" onClick={handleMenuToggle} />

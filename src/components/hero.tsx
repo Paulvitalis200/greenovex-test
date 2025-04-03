@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
           ref={(el) => {
             if (el) elementsRef.current[1] = el;
           }}
-          className="text-[30px] md:text-[50px] leading-tight tracking-wide font-raleway font-bold px-4 py-2 md:px-0 md:py-0 lg:leading-[80px] md:max-w-3xl mb-8 md:mb-1"
+          className="text-[30px] md:text-[50px] leading-tight tracking-wide font-raleway font-bold px-4 py-2 md:px-0 md:py-0 lg:leading-[80px] md:max-w-3xl mb-8 md:mb-1 mt-4"
         >
           Engineering a Sustainable Future
         </h1>
