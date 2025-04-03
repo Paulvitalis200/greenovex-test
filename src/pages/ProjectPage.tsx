@@ -125,14 +125,14 @@ const ProjectPage: React.FC = () => {
       <NavigationBar />
       <button
         onClick={() => navigate("/#projects")}
-        className="flex absolute left-6 top-6 md:left-24 md:top-15 items-center my-6 hover:opacity-75 transition-opacity cursor-pointer rounded-2xl p-2"
+        className="flex absolute left-4.5 top-8 md:left-24 md:top-15 items-center my-6 py-8 hover:opacity-75 transition-opacity cursor-pointer rounded-2xl p-2"
       >
         <FiArrowLeft className="text-black text-xl" />
         <span className="text-black font-semibold ml-2">Back</span>
       </button>
 
       {/* Project Title & Location */}
-      <div className="flex flex-col justify-between mt-4 gap-4">
+      <div className="flex flex-col justify-between mt-8 gap-4">
         <h2
           ref={textRef}
           className="text-center text-[18px] md:text-[30px] leading-[100%] tracking-[0%] font-raleway font-semibold"
