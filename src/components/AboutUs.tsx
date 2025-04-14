@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import NavigationBar from "./NavigationBar";
 
 const AboutUs: React.FC = () => {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <section
       id="about"
@@ -10,25 +12,42 @@ const AboutUs: React.FC = () => {
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>
+
       <div className="flex flex-col items-start justify-center mx-auto lg:my-[30px] mb-12 md:px-12 mt-14">
         <p className="uppercase flex justify-items-start text-[16px] font-medium tracking-[0%] leading-[100%] pt-3.5 font-raleway">
           / ABOUT US
         </p>
-        <h2 className="text-lg  lg:text-[40px] lg:font-semibold leading-[100%] tracking-[0%] text-left items-center font-raleway md:text-4xl font-semibold mt-10">
-          We are a leader in Engineering, providing energy solutions and making
-          a difference in the community. By facilitating the transition to
-          renewable energy, we are helping to reduce reliance on fossil fuels,
-          decrease carbon emissions, and promote energy independence.
+        <h2 className="text-lg lg:text-[40px] lg:font-semibold leading-[100%] tracking-[0%] text-left items-center font-raleway md:text-4xl font-semibold mt-10">
+          Established in 2022, Greenovex Solutions is a Kenyan company that aims
+          to spur social- economic transformation in Africa through the
+          development of community-based sustainable power and water solutions.
+          We intend to help address the challenges of water scarcity, water
+          quality, and inadequate power.{" "}
+          
         </h2>
-        {/* <div className="flex justify-center w-full">
-          <button className="md:text-[20px] justify-center hidden lg:block mt-6 text-white font-medium hover:opacity-80">
-            Read more
+        {showMore && (
+            <h2 className="text-lg lg:text-[40px] lg:font-semibold leading-[100%] tracking-[0%] text-left items-center font-raleway md:text-4xl font-semibold mt-10">
+            With the increasing scarcity of water and inadequate supply of
+            power, our team dedicates itself to providing reliable solutions in
+            the most professional approach, to uplift our communities. We are
+            proud of our achievements thus far and look to the future with
+            enthusiasm, to grow with the needs of our customers, transform
+            communities, and change lives.
+          </h2>
+          )}
+
+        <div className="flex justify-center w-full">
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="md:text-[18px] cursor-pointer justify-center mt-6 text-green-600 font-medium font-raleway border-1 border-[#16A718] px-6 py-2 rounded-sm hover:bg-[#16A718] hover:text-white"
+          >
+            {showMore ? "READ LESS" : "READ MORE"}
           </button>
-        </div> */}
+        </div>
       </div>
 
       {/* Grid Section */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 items-start md:gap-1 lg:gap-8 mt-12 mx-0 md:mx-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 items-start md:gap-1 lg:gap-8 mt-12 mx-0 py-3.5 md:mx-12">
         {/* Image with Green Overlay */}
         <div className="relative w-full h-[200px] md:h-[400px] rounded-lg">
           <img
@@ -51,40 +70,38 @@ const AboutUs: React.FC = () => {
         </div>
 
         {/* Client Satisfaction & Cost Efficiency */}
-        <div className="grid grid-rows-2 gap-1 md:gap-4 font-raleway">
+        <div className="grid gap-7 md:gap-4 font-raleway">
           {/* Client Satisfaction */}
-          <div className="bg-[#B4F5B5] text-black p-6 rounded-lg flex flex-col gap-4 justify-center  md:w-[230px] lg:w-full h-[128px] md:h-full mt-4 sm:mt-0">
+          <div className="bg-[#B4F5B5] text-black p-6 rounded-lg flex flex-col gap-4 justify-center md:w-[230px] lg:w-full h-[190px] md:h-[200px] mt-4 md:mt-0">
             <h3 className="text-[16px] md:text-xl font-semibold leading-[100%] font-raleway">
               Client Satisfaction
             </h3>
             <h2 className="text-[20px] md:text-[45px] font-bold mt-2 leading-[100%]">
               95%
             </h2>
-            <p className="text-[16px] md:text-xl font-semibold font-raleway leading-[100%] tracking-[0%] lg:w-[250px]">
+            <p className="text-[16px] md:text-xl font-semibold font-raleway leading-[100%] tracking-[0%] ">
               Driven by our commitment to quality & innovation.
             </p>
           </div>
 
-          {/* Cost Efficiency */}
-          <div className="bg-[#B4F5B5] text-black p-6 mt-2 md:mt-0 rounded-lg flex flex-col gap-4 md:gap-2 justify-center md:w-full md:h-full h-[128px] mt-4 sm:mt-0">
-            <h3 className="text-[16px] md:text-xl font-semibold font-raleway leading-[100%] tracking-[0%]">
-              Cost Efficiency
-            </h3>
-            <h2 className="text-[20px] md:text-[45px] font-bold mt-2 font-raleway">
-              20%
-            </h2>
-            <p className="text-[16px] md:text-lg font-raleway font-semibold">
-              Cost savings for clients
-            </p>
+          <div className="bg-transparent text-black rounded-lg flex flex-col gap-4 md:gap-2 justify-center mt-[-10px] md:mt-0 mb-4 md:mb-0">
+            <img
+              className="w-full h-[200px] md:h-[300px] md:w-full object-cover object-center rounded-lg"
+              src="/static/images/about-img-resized.webp"
+              loading="lazy"
+              alt="Cost Efficiency"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#165D1E7D] to-[#5CB67F] rounded-lg"></div>
           </div>
         </div>
 
-        {/* Second Image */}
-        <div className=" h-[152px] mt-4  md:mt-0 rounded-[6px] md:rounded-[10px] md:w-full md:h-[400px]">
+        {/* Third Image */}
+        <div className="  mt-0 rounded-[6px] md:rounded-[10px] md:w-full ">
           <img
             src="/static/images/solar.webp"
             alt="Solar Panel Installation"
-            className="w-full h-full object-cover object-center rounded-lg"
+            loading="lazy"
+            className="w-full h-[200px] md:h-full object-cover object-center rounded-lg"
           />
         </div>
       </div>

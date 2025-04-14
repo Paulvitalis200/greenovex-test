@@ -43,6 +43,7 @@ const Hero: React.FC = () => {
       className="relative w-full h-screen flex items-center justify-center bg-gray-100 py-20 bg-center md:bg-cover md:bg-top z-10"
       style={{ backgroundImage: `url(${background})` }}
     >
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
       {/* Navigation Bar */}
@@ -85,12 +86,13 @@ const Hero: React.FC = () => {
             if (el) elementsRef.current[3] = el;
           }}
         >
-    
-            <button className="bg-[#16A718] text-white font-medium rounded-md px-6 py-2 mt-8 md:mt-4 flex items-center gap-2 cursor-pointer" onClick={scrollToAbout}>
-              <span className="text-lg font-raleway">Get Started</span>
-              <FaArrowRightLong className="text-white text-xl" />
-            </button>
-          
+          <button
+            className="bg-[#16A718] text-white font-medium rounded-md px-6 py-2 mt-8 md:mt-4 flex items-center gap-2 cursor-pointer"
+            onClick={scrollToAbout}
+          >
+            <span className="text-lg font-raleway">Get Started</span>
+            <FaArrowRightLong className="text-white text-xl" />
+          </button>
         </div>
 
         {/* Features List */}

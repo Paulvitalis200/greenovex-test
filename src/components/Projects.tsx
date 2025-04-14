@@ -60,7 +60,10 @@ const Projects: React.FC = () => {
   );
 
   return (
-    <section id="projects" className="min-h-[70vh] py-24 px-10 md:px-16 lg:px-24 font-raleway">
+    <section
+      id="projects"
+      className="min-h-[70vh] py-24 px-10 md:px-16 lg:px-24 font-raleway"
+    >
       <div className="absolute top-0 right-0 left-0 w-full z-50">
         <NavigationBar />
       </div>
@@ -70,11 +73,11 @@ const Projects: React.FC = () => {
           From Ideation to Implementation: Our Proven track record
         </h2>
         <div className="hidden md:flex gap-2">
-          <button onClick={scrollPrev}>
-            <HiArrowLeftCircle className="text-[#16A718] text-[57px]" />
+          <button className="cursor-pointer" onClick={scrollPrev}>
+            <HiArrowLeftCircle className="text-[#16A718] hover:text-green-700 text-[57px]" />
           </button>
-          <button onClick={scrollNext}>
-            <HiArrowRightCircle className="text-[#16A718] text-[57px]" />
+          <button className="cursor-pointer " onClick={scrollNext}>
+            <HiArrowRightCircle className="text-[#16A718] hover:text-green-700 text-[57px]" />
           </button>
         </div>
       </div>
@@ -91,6 +94,7 @@ const Projects: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-56 object-cover"
                   />
                   <div className="p-4">
@@ -114,10 +118,14 @@ const Projects: React.FC = () => {
         {/* Grid Layout for Mobile */}
         <div className="grid grid-cols-2 gap-4 md:hidden">
           {projects.map((project) => (
-            <div key={project.id} className="rounded-md overflow-hidden shadow-sm">
+            <div
+              key={project.id}
+              className="rounded-md overflow-hidden shadow-sm"
+            >
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
                 className="w-[160px] h-[107px] object-cover"
               />
               <div className="p-2 flex flex-row justify-between gap-2.5">
