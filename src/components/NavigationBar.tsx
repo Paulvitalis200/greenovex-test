@@ -96,7 +96,9 @@ const NavigationBar: FC = () => {
         {!isHeroVisible && (
           <div className="absolute left-1/2 transform -translate-x-1/2">
             {/* <Logo /> */}
+            <a href="/#">
             <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
+            </a>
           </div>
         )}
 
@@ -131,7 +133,10 @@ const NavigationBar: FC = () => {
         {/* Logo Mobile - Visible after the hero section */}
         <div>
           {!isHeroVisible && 
-          <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
+          <a href="/#">
+            <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
+          </a>
+     
           }
         </div>
         <div>
