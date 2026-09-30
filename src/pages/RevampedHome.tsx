@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Phone, Mail, MapPin, X, ChevronDown } from 'lucide-react';
+import { ArrowRight, Phone, Mail, MapPin, X, ChevronDown, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -32,6 +32,7 @@ const TEAM = [
 
 const Navbar = () => {
   const navRef = useRef<HTMLElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,21 +49,49 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full px-6 py-3 flex items-center gap-8 bg-transparent text-background">
-      <Link to="/" className="link-lift flex items-center justify-center p-1">
-        <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-8 h-8" />
-      </Link>
-      <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a href="#about" className="link-lift">About Us</a>
-        <a href="#services" className="link-lift">Services</a>
-        <a href="#projects" className="link-lift">Projects</a>
-        <a href="#team" className="link-lift">Team</a>
-        <a href="#contact" className="link-lift">Contact</a>
+    <>
+      <div className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 md:px-0 pointer-events-none">
+        <nav ref={navRef} className="pointer-events-auto transition-all duration-300 w-full md:w-auto rounded-2xl md:rounded-full px-4 md:px-6 py-3 flex items-center justify-between md:justify-center gap-4 md:gap-8 bg-transparent text-background">
+          <Link to="/" className="link-lift flex items-center justify-center p-1">
+            <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-8 h-8" />
+          </Link>
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a href="#about" className="link-lift">About Us</a>
+            <a href="#services" className="link-lift">Services</a>
+            <a href="#projects" className="link-lift">Projects</a>
+            <a href="#team" className="link-lift">Team</a>
+            <a href="#contact" className="link-lift">Contact</a>
+          </div>
+          <a href="#services" className="hidden md:inline-flex btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
+            View Services
+          </a>
+          <button 
+            className="md:hidden p-2 text-current" 
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Menu size={24} />
+          </button>
+        </nav>
       </div>
-      <a href="#services" className="btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
-        View Services
-      </a>
-    </nav>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-primary text-background flex flex-col p-6 animate-[fadeIn_0.2s_ease-out]">
+          <div className="flex justify-between items-center mb-16">
+            <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-10 h-10" />
+            <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-background/50 hover:text-accent transition-colors">
+              <X size={32} />
+            </button>
+          </div>
+          <div className="flex flex-col gap-8 text-3xl font-display font-medium px-4">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">About Us</a>
+            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Services</a>
+            <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Projects</a>
+            <a href="#team" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Team</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Contact</a>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -241,28 +270,83 @@ const Philosophy = () => {
 };
 
 const ServicesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>('.service-item');
+      
+      items.forEach((item) => {
+        const image = item.querySelector('.service-parallax-image');
+        
+        // Parallax image effect
+        gsap.fromTo(image, 
+          { y: '-15%' }, 
+          {
+            y: '15%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          }
+        );
+
+        // Reveal animation
+        gsap.from(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 75%',
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="services" className="py-32 px-8 md:px-16 bg-background">
+    <section id="services" ref={sectionRef} className="py-32 px-8 md:px-16 bg-primary text-background border-t border-background/10">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-24 text-center flex flex-col items-center">
           <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Services</h3>
-          <h2 className="text-4xl md:text-5xl font-sans font-bold text-primary max-w-2xl leading-tight">
-            Engineering services that ensure the success of your projects.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-background leading-tight max-w-3xl">
+            Engineered for absolute resilience.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-12">
-          {SERVICES.map((service, index) => (
-            <div key={service.id} className="group relative bg-background border border-steel/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row hover:border-accent/50 transition-colors duration-500">
-              <div className="w-full md:w-2/5 h-64 md:h-auto overflow-hidden relative border-b md:border-b-0 md:border-r border-steel/10">
-                <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="space-y-32">
+          {SERVICES.map((service, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div key={service.id} className={`service-item flex flex-col gap-12 lg:gap-24 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                
+                {/* Image Block */}
+                <div className="w-full lg:w-1/2 aspect-[4/3] lg:aspect-square overflow-hidden rounded-[2rem] bg-background/5 relative group border border-background/10">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="service-parallax-image absolute top-[-15%] left-0 w-full h-[130%] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
+                </div>
+
+                {/* Text Block */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <div className="text-accent font-mono text-sm tracking-widest mb-6">0{index + 1} // {service.category}</div>
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-background mb-8">{service.title}</h3>
+                  <p className="text-background/70 text-lg lg:text-xl font-sans leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
               </div>
-              <div className="w-full md:w-3/5 p-10 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold font-sans text-primary mb-6">{service.title}</h3>
-                <p className="text-steel/80 text-base md:text-lg font-serif leading-relaxed">{service.desc}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
