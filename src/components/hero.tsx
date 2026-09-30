@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import background from "../assets/hero.webp";
-import { FaArrowRightLong } from "react-icons/fa6";
 import NavigationBar from "../components/NavigationBar";
-import Logo from "../components/Logo";
 import gsap from "gsap";
 
 const Hero: React.FC = () => {
@@ -14,107 +12,70 @@ const Hero: React.FC = () => {
         elementsRef.current,
         {
           opacity: 0,
-          y: 50,
-          ease: "power4.out",
+          y: 40,
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
-          stagger: 0.3,
-          delay: 0.5,
+          duration: 1.2,
+          stagger: 0.08,
+          ease: "power3.out",
+          delay: 0.2,
         }
       );
-    }, elementsRef);
+    });
 
     return () => ctx.revert();
   }, []);
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       id="home"
-      className="relative w-full h-screen flex items-center justify-center bg-gray-100 py-20 bg-center md:bg-cover md:bg-top z-10"
+      className="relative w-full h-[100dvh] flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 lg:px-32 bg-[#1E2022] bg-center bg-cover overflow-hidden"
       style={{ backgroundImage: `url(${background})` }}
     >
+      {/* Heavy primary-to-black gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1E2022] via-[#1E2022]/80 to-transparent z-0"></div>
+      
+      {/* Navigation */}
+      <NavigationBar />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-      {/* Navigation Bar */}
-      <div className="absolute top-0 right-0 left-0 w-full z-50">
-        <NavigationBar />
-      </div>
-      {/* Hero Content */}
-      <div
-        id="hero"
-        className="relative flex flex-col items-center text-center text-white z-10"
-      >
-        <div
-          ref={(el) => {
-            if (el) elementsRef.current[0] = el;
-          }}
+      {/* Hero Content pushed to bottom-left third */}
+      <div className="relative z-10 flex flex-col items-start text-[#F4F4F4] max-w-4xl">
+        <h1 
+          ref={(el) => { if (el) elementsRef.current[0] = el; }}
+          className="text-2xl md:text-3xl font-sans font-bold tracking-wide uppercase text-[#C57A36] mb-2"
         >
-          <Logo />
-        </div>
-        <h1
-          ref={(el) => {
-            if (el) elementsRef.current[1] = el;
-          }}
-          className="text-[30px] md:text-[50px] leading-tight tracking-wide font-raleway font-bold px-4 py-2 md:px-0 md:py-0 lg:leading-[80px] md:max-w-3xl mb-8 md:mb-1 mt-4"
-        >
-          Engineering a Sustainable Future
+          Greenovex
         </h1>
-        <p
-          ref={(el) => {
-            if (el) elementsRef.current[2] = el;
-          }}
-          className="text-[16px] md:text-2xl font-raleway font-medium mt-4 mb-[20px] lg:text-[20px] lg:leading-6 max-w-[317px] md:min-w-[661px]"
+        
+        <div className="flex flex-col mb-6">
+          <span 
+            ref={(el) => { if (el) elementsRef.current[1] = el; }}
+            className="text-[40px] md:text-[80px] leading-none font-sans font-extrabold tracking-tight"
+          >
+            Forging the
+          </span>
+          <span 
+            ref={(el) => { if (el) elementsRef.current[2] = el; }}
+            className="text-[56px] md:text-[100px] leading-[0.9] font-serif italic text-white pr-4"
+          >
+            Future.
+          </span>
+        </div>
+        
+        <p 
+          ref={(el) => { if (el) elementsRef.current[3] = el; }}
+          className="text-lg md:text-xl font-mono text-[#F4F4F4]/80 max-w-lg mb-8 leading-relaxed"
         >
-          Discover how our innovative solutions are transforming industries and
-          creating a more sustainable world.
+          Precision engineering and sustainable infrastructure for a resilient tomorrow.
         </p>
 
-        {/* Call to Action */}
-        <div
-          ref={(el) => {
-            if (el) elementsRef.current[3] = el;
-          }}
-        >
-          <button
-            className="bg-[#16A718] text-white font-medium rounded-md px-6 py-2 mt-8 md:mt-4 flex items-center gap-2 cursor-pointer"
-            onClick={scrollToAbout}
-          >
-            <span className="text-lg font-raleway">Get Started</span>
-            <FaArrowRightLong className="text-white text-xl" />
-          </button>
+        <div ref={(el) => { if (el) elementsRef.current[4] = el; }}>
+          <a href="#services" className="btn-magnetic bg-[#C57A36] text-[#F4F4F4] px-8 py-4 font-sans font-bold text-lg hover:bg-[#a66226] transition-colors">
+            Our services
+          </a>
         </div>
-
-        {/* Features List */}
-        {/* <div
-          ref={(el) => {
-            if (el) elementsRef.current[4] = el;
-          }}
-          className="flex flex-col lg:flex-row flex-wrap justify-center gap-6 mt-14"
-        >
-          {["Engineering", "Solar Power", "Maintenance"].map((item, index) => (
-            <div
-              key={item}
-              ref={(el) => {
-                if (el) elementsRef.current[5 + index] = el;
-              }}
-              className="flex items-center gap-2"
-            >
-              <CheckCircle />
-              <span className="text-lg font-raleway font-medium">{item}</span>
-            </div>
-          ))}
-        </div> */}
       </div>
     </section>
   );

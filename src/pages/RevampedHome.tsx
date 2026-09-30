@@ -1,0 +1,465 @@
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight, Phone, Mail, MapPin, X, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// --- Data ---
+const SERVICES = [
+  { id: 's1', title: 'Solar Power', category: 'Solar', image: '/static/images/solar-power.webp', desc: 'The continent is blessed with abundant solar energy, which provides a great opportunity to provide sustainable power. Our solar lighting systems, solar street lighting, power backup systems, and solar water heating systems provide this solution for domestic, community, and industrial applications.' },
+  { id: 's2', title: 'Water Pumping', category: 'Water', image: '/static/images/water-pumping.webp', desc: 'Africa’s major challenge that leads to low quality of life is water scarcity, especially in off-grid areas. Greenovex offers a wide range of customized water pumping solutions for water supply, irrigation, industrial applications, and domestic and municipal supply. The pumps can be powered by different sources of power depending on availability and cost-effectiveness, i.e., solar, electricity, diesel, and even hand.' },
+  { id: 's3', title: 'Borehole Services', category: 'Borehole', image: '/static/images/borehole-services.webp', desc: 'To try to bridge the gaps that lead to water scarcity, Greenovex Solutions offers Geophysical and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works, Consultation, project supervision, and contracting) that meet International Standards, using modern technology.' },
+  { id: 's4', title: 'Water Treatment', category: 'Water', image: '/static/images/water-treatment.webp', desc: 'Water portability is among the causes of water scarcity in some parts of the world. Greenovex employs the leading technologies in water treatment and water purification to provide the highest possible water quality from your available sources. Our water treatment solutions are customized to your specific needs with processes such as Reverse Osmosis, water softening, disinfection, and filtration systems.' },
+];
+
+const PROJECTS = [
+  { id: 'p1', title: '10KVA Off-grid Solar System in Matuu', image: '/static/images/solar-roof.webp' },
+  { id: 'p2', title: '2kW Off-Grid Solar System in Uganda', image: '/static/images/solar-battery.webp' },
+  { id: 'p3', title: 'Borehole Pump Maintenance, Kitui', image: '/static/images/borehole-install.webp' },
+  { id: 'p4', title: 'Borehole Solarization, Mandera', image: '/static/images/mandera.webp' },
+];
+
+const TEAM = [
+  { name: 'Davis Usenge', role: 'Chief Executive Officer', image: '/static/images/davis.webp', aboutFullText: 'Davis Usenge holds a Bachelor’s Degree in Environmental and Biosystems Engineering from the University of Nairobi and MSc in Project Planning and Management from Kampala International University. With a strong background in biological wastewater treatment, electro-mechanical systems, and renewable energy, Davis has been instrumental in driving forward environmentally friendly technologies that create lasting impact.' },
+  { name: 'Isaiah Ong’ong’a', role: 'Director of technical operations', image: '/static/images/Isaiah.webp', aboutFullText: 'Isaiah Ong’ong’a is a renewable energy expert, entrepreneur, and researcher with a strong passion for advancing solar energy adoption in Kenya and Africa at large. Holding a Master’s degree in Electrical Engineering from Nanjing University, he has extensive experience in solar PV systems and hybrid energy solutions.' },
+  { name: 'George Odhiambo', role: 'Director of Projects', image: '/static/images/george.webp', aboutFullText: 'George Odhiambo is an experienced solar installer with over 20 years of expertise in the renewable energy sector. At Greenovex Solutions Limited, he plays a pivotal role in project management and implementation, ensuring seamless execution of solar installations from design to commissioning.' },
+];
+
+// --- Components ---
+
+const Navbar = () => {
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        navRef.current?.classList.add('bg-background/40', 'backdrop-blur-2xl', 'border', 'border-steel/10', 'text-primary', 'shadow-sm');
+        navRef.current?.classList.remove('bg-transparent', 'text-background');
+      } else {
+        navRef.current?.classList.remove('bg-background/40', 'backdrop-blur-2xl', 'border', 'border-steel/10', 'text-primary', 'shadow-sm');
+        navRef.current?.classList.add('bg-transparent', 'text-background');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full px-6 py-3 flex items-center gap-8 bg-transparent text-background">
+      <Link to="/" className="link-lift flex items-center justify-center p-1">
+        <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-8 h-8" />
+      </Link>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#about" className="link-lift">About Us</a>
+        <a href="#services" className="link-lift">Services</a>
+        <a href="#projects" className="link-lift">Projects</a>
+        <a href="#team" className="link-lift">Team</a>
+        <a href="#contact" className="link-lift">Contact</a>
+      </div>
+      <a href="#services" className="btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
+        View Services
+      </a>
+    </nav>
+  );
+};
+
+const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-brand', {
+        scale: 0.85,
+        y: 40,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power3.out',
+        delay: 0.1
+      });
+      gsap.from('.hero-text', {
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: 'power3.out',
+        delay: 0.5
+      });
+      gsap.fromTo('.scroll-indicator-container', 
+        { opacity: 0 },
+        { opacity: 1, duration: 1, delay: 1.5 }
+      );
+      gsap.to('.scroll-indicator', {
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        duration: 1.5,
+        delay: 1.5
+      });
+    }, heroRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={heroRef} className="relative w-full h-[100dvh] flex items-center justify-center px-8 md:px-16 overflow-hidden">
+      <div className="absolute inset-0 z-0 bg-primary">
+        <img 
+          src="/static/images/solar.webp" 
+          alt="Hero background" 
+          className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+      </div>
+      
+      <div className="relative z-10 w-full flex flex-col items-center text-center mt-12">
+        <div className="hero-brand flex items-center justify-center gap-4 md:gap-6 mb-8 mt-12">
+          <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-10 h-10 md:w-16 md:h-16 drop-shadow-lg" />
+          <h1 className="text-4xl md:text-5xl lg:text-[5rem] leading-[0.9] font-display font-black text-background tracking-tight uppercase drop-shadow-md">
+            Greenovex
+          </h1>
+        </div>
+        <div className="max-w-4xl flex flex-col items-center">
+          <h2 className="hero-text text-2xl md:text-4xl lg:text-5xl font-serif italic text-accent mb-6 drop-shadow-sm">
+            Forging the Infrastructure.
+          </h2>
+          <p className="hero-text text-base md:text-xl text-background/80 max-w-2xl font-mono leading-relaxed">
+            Engineering the infrastructure of tomorrow. Sustainable energy and water solutions designed for absolute resilience.
+          </p>
+        </div>
+      </div>
+
+      <div className="scroll-indicator-container absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer group" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-background/50 group-hover:text-background transition-colors">Scroll</span>
+        <div className="scroll-indicator text-accent group-hover:text-background transition-colors">
+          <ChevronDown size={24} strokeWidth={1.5} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AboutUs = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.about-reveal', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out'
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="about" ref={sectionRef} className="py-32 px-8 md:px-16 bg-background text-steel relative">
+      <div className="max-w-7xl mx-auto">
+        <h3 className="about-reveal font-mono uppercase tracking-widest text-accent text-sm mb-6">/ About Us</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2 className="about-reveal font-serif italic text-4xl md:text-5xl mb-8 text-primary leading-tight">
+              Spurring socio-economic transformation in Africa.
+            </h2>
+            <p className="about-reveal text-lg font-sans leading-relaxed mb-6 text-steel/80">
+              Established in 2022, Greenovex Solutions is a Kenyan company that aims to spur socio-economic transformation in Africa through the development of community-based sustainable power and water solutions. We intend to help address the challenges of water scarcity, water quality, and inadequate power.
+            </p>
+            <p className="about-reveal text-lg font-sans leading-relaxed text-steel/80">
+              With the increasing scarcity of water and inadequate supply of power, our team dedicates itself to providing reliable solutions in the most professional approach, to uplift our communities. We are proud of our achievements thus far and look to the future with enthusiasm, to grow with the needs of our customers, transform communities, and change lives.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 about-reveal">
+            <div className="bg-primary text-background p-8 rounded-[2rem] flex flex-col justify-between h-[250px] relative overflow-hidden group border border-steel/10">
+              <p className="font-mono text-sm uppercase tracking-widest text-background/60">Completion Rate</p>
+              <h3 className="text-6xl font-serif italic text-accent mt-4">99%</h3>
+              <p className="font-sans font-medium mt-4">On-time project delivery</p>
+            </div>
+            
+            <div className="bg-accent text-background p-8 rounded-[2rem] flex flex-col justify-between h-[250px] relative overflow-hidden group border border-steel/10">
+              <p className="font-mono text-sm uppercase tracking-widest text-background/60">Client Satisfaction</p>
+              <h3 className="text-6xl font-serif italic mt-4">95%</h3>
+              <p className="font-sans font-medium mt-4">Committed to quality</p>
+            </div>
+            
+            <div className="sm:col-span-2 h-[250px] rounded-[2rem] overflow-hidden relative">
+               <img src="/static/images/image1.webp" alt="Greenovex at work" className="w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Philosophy = () => {
+  const philRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.phil-text', {
+        scrollTrigger: {
+          trigger: philRef.current,
+          start: 'top 60%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out'
+      });
+    }, philRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={philRef} className="py-40 px-8 md:px-16 bg-primary text-background relative overflow-hidden">
+       <div className="absolute inset-0 z-0">
+          <img src="/static/images/10kva.webp" alt="Background" className="w-full h-full object-cover opacity-20 mix-blend-luminosity grayscale" />
+          <div className="absolute inset-0 bg-primary/90"></div>
+       </div>
+      <div className="max-w-5xl mx-auto relative z-10 text-center">
+        <p className="phil-text text-xl md:text-2xl font-mono text-background/60 mb-8">Most companies follow standards.</p>
+        <h2 className="phil-text text-5xl md:text-7xl font-sans font-bold leading-tight">
+          We engineer: <br/>
+          <span className="font-serif italic text-accent text-6xl md:text-8xl">resilience</span>.
+        </h2>
+      </div>
+    </section>
+  );
+};
+
+const ServicesSection = () => {
+  return (
+    <section id="services" className="py-32 px-8 md:px-16 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Services</h3>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-primary max-w-2xl leading-tight">
+            Engineering services that ensure the success of your projects.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-12">
+          {SERVICES.map((service, index) => (
+            <div key={service.id} className="group relative bg-background border border-steel/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row hover:border-accent/50 transition-colors duration-500">
+              <div className="w-full md:w-2/5 h-64 md:h-auto overflow-hidden relative border-b md:border-b-0 md:border-r border-steel/10">
+                <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="w-full md:w-3/5 p-10 flex flex-col justify-center">
+                <h3 className="text-3xl font-bold font-sans text-primary mb-6">{service.title}</h3>
+                <p className="text-steel/80 text-base md:text-lg font-serif leading-relaxed">{service.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectsSection = () => {
+  return (
+    <section id="projects" className="py-32 px-8 md:px-16 bg-primary text-background border-t border-background/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Projects</h3>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-background max-w-2xl leading-tight">
+            From Ideation to Implementation: Our Proven Track Record.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PROJECTS.map(project => (
+            <Link to={`/projects/${project.title.trim().toLowerCase().replace(/\s+/g, "-")}`} key={project.id} className="group relative bg-background/5 border border-background/10 rounded-[2rem] overflow-hidden hover:border-accent/50 transition-colors duration-500 block cursor-pointer">
+              <div className="h-56 overflow-hidden relative">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div className="p-6 absolute bottom-0 left-0 right-0 flex items-center justify-between">
+                <h3 className="text-lg font-semibold font-sans text-background leading-tight mr-4">{project.title}</h3>
+                <div className="w-8 h-8 rounded-full bg-accent text-background flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0">
+                  <ArrowRight size={16} />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TeamSection = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentSelection, setCurrentSelection] = useState<typeof TEAM[0] | null>(null);
+
+  const handleOpen = (member: typeof TEAM[0]) => {
+    setCurrentSelection(member);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => setCurrentSelection(null), 300);
+  };
+
+  return (
+    <section id="team" className="py-32 px-8 md:px-16 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ The Team</h3>
+        <h2 className="text-4xl md:text-5xl font-sans font-bold text-primary mb-16">The Minds Behind Greenovex.</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {TEAM.map(member => (
+            <div key={member.name} className="group cursor-pointer" onClick={() => handleOpen(member)}>
+              <div className="aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 bg-steel/5 relative">
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" />
+                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/100 rounded-[2rem] transition-colors duration-500 bg-primary/0 group-hover:bg-primary/20 flex items-end p-6">
+                  <span className="text-background font-mono text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0 shadow-sm drop-shadow-md">Read Bio</span>
+                </div>
+              </div>
+              <h3 className="text-2xl font-serif italic text-primary">{member.name}</h3>
+              <p className="text-accent font-mono text-sm uppercase tracking-widest">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Modal 
+        isOpen={isOpen}
+        onRequestClose={handleClose}
+        className="flex items-center justify-center min-h-screen p-4 outline-none font-sans"
+        overlayClassName="fixed inset-0 z-[100] bg-primary/80 backdrop-blur-md flex items-center justify-center"
+        ariaHideApp={false}
+      >
+        <div className="bg-background rounded-[2rem] p-8 max-w-3xl w-full relative border border-steel/10 shadow-2xl">
+          <button 
+            onClick={handleClose} 
+            className="absolute top-6 right-6 text-steel/50 hover:text-primary transition-colors btn-magnetic p-2 bg-steel/5 rounded-full z-10"
+          >
+            <X size={20} />
+          </button>
+          
+          {currentSelection && (
+            <div className="flex flex-col md:flex-row gap-10 items-center md:items-start mt-4">
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-[2rem] overflow-hidden flex-shrink-0 bg-steel/5">
+                <img
+                  src={currentSelection.image}
+                  alt={currentSelection.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center h-full">
+                <h3 className="font-serif italic text-3xl md:text-4xl text-primary mb-2">{currentSelection.name}</h3>
+                <p className="font-mono text-sm text-accent uppercase tracking-wider mb-6">{currentSelection.role}</p>
+                <p className="text-steel/80 text-base leading-relaxed font-sans">
+                  {currentSelection.aboutFullText}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </Modal>
+    </section>
+  );
+};
+
+const ContactSection = () => {
+  return (
+    <section id="contact" className="py-32 px-8 md:px-16 bg-primary text-background border-t border-background/5">
+       <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-center md:text-left">
+            <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Contact Us</h3>
+            <h2 className="text-4xl md:text-5xl font-sans font-bold text-background max-w-2xl leading-tight md:mx-0 mx-auto">
+              Connect with us to explore how we can be of service to you.
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+               <div>
+                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
+                   <Phone size={24} />
+                 </div>
+                 <h3 className="text-xl font-bold font-sans mb-2">Call Us</h3>
+                 <p className="text-background/60 font-serif mb-4">Mon-Fri from 8 am - 6 pm EAT</p>
+               </div>
+               <div className="flex flex-col gap-2 font-mono text-sm">
+                 <a href="tel:+25472888839" className="hover:text-accent transition-colors link-lift">+254 728 888 39</a>
+                 <a href="tel:+254727568001" className="hover:text-accent transition-colors link-lift">+254 727 568 001</a>
+               </div>
+            </div>
+
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+               <div>
+                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
+                   <Mail size={24} />
+                 </div>
+                 <h3 className="text-xl font-bold font-sans mb-2">Email Us</h3>
+                 <p className="text-background/60 font-serif mb-4">Drop us an email</p>
+               </div>
+               <div className="flex flex-col gap-2 font-mono text-sm">
+                 <a href="mailto:greenovexsolutions@gmail.com" className="hover:text-accent transition-colors link-lift text-wrap break-all">greenovexsolutions@gmail.com</a>
+               </div>
+            </div>
+
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+               <div>
+                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
+                   <MapPin size={24} />
+                 </div>
+                 <h3 className="text-xl font-bold font-sans mb-2">Visit Us</h3>
+                 <p className="text-background/60 font-serif mb-4">Visit our office HQ</p>
+               </div>
+               <div className="flex flex-col gap-2 font-mono text-sm">
+                 <span className="text-background/80">Oginga Odinga St, Kisumu - Kenya</span>
+               </div>
+            </div>
+          </div>
+       </div>
+    </section>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="bg-primary pb-8 px-8 md:px-16 text-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-background/10 text-sm font-mono gap-6">
+          <p>© {new Date().getFullYear()} Greenovex Solutions. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+             <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+             <span className="text-background/60">System Operational</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default function RevampedHome() {
+  return (
+    <main className="w-full relative selection:bg-accent selection:text-background overflow-hidden">
+      <Navbar />
+      <Hero />
+      <AboutUs />
+      <Philosophy />
+      <ServicesSection />
+      <ProjectsSection />
+      <TeamSection />
+      <ContactSection />
+      <Footer />
+    </main>
+  );
+}

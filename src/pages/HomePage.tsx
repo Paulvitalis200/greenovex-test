@@ -1,25 +1,19 @@
-// import React, {useEffect, useRef} from "react";
-import AboutUs from "../components/AboutUs";
-import Footer from "../components/Footer";
-import ContactUs from "../components/ContactUs";
+
 import Hero from "../components/hero";
-import ProjectsSection from "../components/Projects";
-import Services from "../components/Services";
-import TeamSection from "../components/Team";
+import Pillars from "../components/Pillars";
+import Philosophy from "../components/Philosophy";
+import Archive from "../components/Archive";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
-
   return (
-    <>
+    <div className="bg-[#F4F4F4] min-h-screen">
       <Hero />
-      <AboutUs />
-      <Services />
-      <ProjectsSection />
-      <TeamSection />
-      
-      <ContactUs />
+      <Pillars />
+      <Philosophy />
+      <Archive />
       <Footer />
-    </>
+    </div>
   );
 };
 

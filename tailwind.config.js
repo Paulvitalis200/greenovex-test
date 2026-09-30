@@ -4,13 +4,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        raleway: ["Raleway", "sans-serif"],
-        bebas: ["Bebas-Neue", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
+        serif: ["Newsreader", "serif"],
+        mono: ["'Source Code Pro'", "monospace"],
       },
       colors: {
-        primary: "#1a365d",
-        accent: "#2b6cb0",
-        green: "#30BD32",
+        primary: "#1E2022",
+        accent: "#C57A36",
+        background: "#F4F4F4",
+        steel: "#393E46",
       },
     },
   },

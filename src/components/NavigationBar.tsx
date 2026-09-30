@@ -1,150 +1,89 @@
 import { IoMenu } from "react-icons/io5";
-import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect, useRef, FC } from "react";
 import { gsap } from "gsap";
 import Menu from "./Menu";
-import { FC } from "react";
 import { HashLink } from 'react-router-hash-link';
 
 const NavigationBar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const location = useLocation();
-  const leftNavRef = useRef<HTMLUListElement>(null);
-  const rightNavRef = useRef<HTMLUListElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
+    if (isMenuOpen) document.body.classList.add("no-scroll");
+    else document.body.classList.remove("no-scroll");
     return () => document.body.classList.remove("no-scroll");
   }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.getElementById("home");
-      if (heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        setIsHeroVisible(rect.bottom > 0);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // GSAP Animation for Navbar entrance
   useEffect(() => {
-    if (location.pathname !== "/") {
-      setIsHeroVisible(false);
-    }
-  }, [location.pathname]);
-
-  // GSAP Animation for Navbar Links
-  useEffect(() => {
-    if (leftNavRef.current && rightNavRef.current) {
+    if (navRef.current) {
       gsap.fromTo(
-        leftNavRef.current.children,
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.out" }
-      );
-      gsap.fromTo(
-        rightNavRef.current.children,
-        { x: 50, opacity: 0 },
-        { x: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.out" }
+        navRef.current,
+        { y: -50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.2 }
       );
     }
   }, []);
 
   return (
-    <div
-      className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-raleway ${
-        isHeroVisible
-          ? "bg-transparent text-white"
-          : "bg-white text-black "
-      }`}
-    >
-      <div className="hidden w-full py-4 px-6 lg:px-24 lg:flex justify-between items-center">
-        {/* Left Navigation */}
-        <ul ref={leftNavRef} className="flex gap-12 items-center">
-          <li>
-            {/* <a href="#hero" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}> */}
-            <HashLink smooth to="/#" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-              Home
-            </HashLink>
-            {/* </a> */}
-          </li>
-          <li>
-          <HashLink smooth to="/#about" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-          About us
-          </HashLink>
-          </li>
-          <li>
-          <HashLink smooth to="/#projects" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-          Projects
-          </HashLink>
-          </li>
-        </ul>
-
-        {/* Logo (Hidden on Hero Section in Desktop View) */}
-        {!isHeroVisible && (
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            {/* <Logo /> */}
-            <a href="/#">
-            <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
-            </a>
-          </div>
-        )}
-
-        {/* Right Navigation */}
-        <ul ref={rightNavRef} className="flex gap-12 items-center">
-          <li>
-          <HashLink smooth to="/#team" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-          Team
-          </HashLink>
-          </li>
-          <li>
-          <HashLink smooth to="/#services" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-          Services
-          </HashLink>
-          </li>
-          <li>
-          <HashLink smooth to="/#contact" className={`${isHeroVisible ? "hover:border-b-4 hover:border-green-600" : "hover:text-green-600"}`}>
-          Contact us
-          </HashLink>
-          </li>
-        </ul>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`flex fixed right-0 left-0 top-0 p-6 lg:hidden flex-row justify-between items-center ${
-          isHeroVisible
-            ? "bg-transparent text-white"
-            : "bg-white text-black shadow-xs"
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center w-full px-4 font-sans pointer-events-none">
+      {/* Desktop Navbar */}
+      <div 
+        ref={navRef}
+        className={`hidden lg:flex items-center justify-between px-8 py-3 rounded-[3rem] transition-all duration-500 pointer-events-auto shadow-sm ${
+          isScrolled 
+            ? "bg-[#F4F4F4]/80 backdrop-blur-xl text-[#393E46] border border-[#1E2022]/10 w-[80%]" 
+            : "bg-transparent text-white border border-transparent w-[90%]"
         }`}
       >
-        {/* Logo Mobile - Visible after the hero section */}
-        <div>
-          {!isHeroVisible && 
-          <a href="/#">
-            <img src="/static/images/Greenovex-individual-blue.svg" className="w-8 md:w-8"/>
-          </a>
-     
-          }
-        </div>
-        <div>
-          <IoMenu className="w-[24px] h-[26px]" onClick={handleMenuToggle} />
-        </div>
+        <HashLink smooth to="/#" className="link-lift flex items-center gap-2">
+          <img 
+            src={isScrolled ? "/static/images/Greenovex-individual-green.svg" : "/static/images/Greenovex-individual-white.svg"} 
+            alt="Greenovex Logo" 
+            className="h-8 w-auto" 
+          />
+          <span className="text-xl font-bold font-sans tracking-wide">Greenovex</span>
+        </HashLink>
 
-        {isMenuOpen && <Menu onClose={handleMenuToggle} />}
+        <ul className="flex items-center gap-8 font-medium text-sm">
+          <li><HashLink smooth to="/#about" className="link-lift hover:text-[#C57A36] transition-colors">About</HashLink></li>
+          <li><HashLink smooth to="/#services" className="link-lift hover:text-[#C57A36] transition-colors">Services</HashLink></li>
+          <li><HashLink smooth to="/#projects" className="link-lift hover:text-[#C57A36] transition-colors">Projects</HashLink></li>
+          <li><HashLink smooth to="/#team" className="link-lift hover:text-[#C57A36] transition-colors">Team</HashLink></li>
+        </ul>
+
+        <HashLink smooth to="/#services" className={`btn-magnetic px-5 py-2 text-sm font-semibold transition-colors duration-300 ${isScrolled ? 'bg-[#1E2022] text-[#F4F4F4]' : 'bg-white text-[#1E2022]'}`}>
+          <span className="relative z-10">Our services</span>
+        </HashLink>
       </div>
+
+      {/* Mobile Navbar */}
+      <div className={`lg:hidden flex items-center justify-between w-full px-6 py-4 rounded-[2rem] pointer-events-auto transition-all duration-500 ${
+        isScrolled ? "bg-[#F4F4F4]/90 backdrop-blur-xl text-[#393E46] border border-[#1E2022]/10 mx-2" : "bg-transparent text-white"
+      }`}>
+        <HashLink smooth to="/#" className="flex items-center gap-2">
+          <img 
+            src={isScrolled ? "/static/images/Greenovex-individual-green.svg" : "/static/images/Greenovex-individual-white.svg"} 
+            alt="Greenovex Logo" 
+            className="h-8 w-auto" 
+          />
+          <span className="text-xl font-bold font-sans">Greenovex</span>
+        </HashLink>
+        <IoMenu className="text-2xl cursor-pointer" onClick={handleMenuToggle} />
+      </div>
+
+      {isMenuOpen && <Menu onClose={handleMenuToggle} />}
     </div>
   );
 };

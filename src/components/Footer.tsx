@@ -1,53 +1,59 @@
-import { IoCallOutline } from "react-icons/io5";
-import { CiMail } from "react-icons/ci";
-import { MdOutlineLocationOn } from "react-icons/md";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import React from 'react';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <div className="min-h-[20vh] p-8 md:p-8 lg:px-24 flex flex-col items-center font-raleway bg-[#16A718]">
-      <div className="w-full flex md:justify-start gap-80">
-        <div className="flex flex-col gap-4 md:gap-8 text-white">
-          <img src="/static/images/Greenovex-white.svg" className="w-30 md:w-40"/>
-          <div className="flex items-center gap-2">
-            <MdOutlineLocationOn className="text-xl" />
-            <p className="text-[14px] md:text-sm font-semibold">
-              Oginga Odinga St, Kisumu - Kenya
-            </p>
+    <footer className="bg-[#1E2022] text-[#F4F4F4] pt-20 pb-8 px-6 md:px-16 lg:px-32 rounded-t-[4rem] mt-[-2rem] relative z-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        {/* Brand */}
+        <div className="md:col-span-2">
+          <div className="flex items-center gap-3 mb-4">
+            <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="h-10 w-auto" />
+            <h2 className="text-3xl font-sans font-bold text-[#C57A36] uppercase tracking-wide">Greenovex</h2>
           </div>
-          <div className="flex items-center gap-2">
-            <IoCallOutline className="text-xl" />
-            <p className="text-[14px] md:text-sm font-semibold">
-              +254792750490 / +254772568001
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <CiMail className="text-xl" />
-            <p className="text-[14px] md:text-sm font-semibold">
-              P.O. BOX 40100, Kisumu - Kenya
-            </p>
+          <p className="text-sm font-sans text-[#F4F4F4]/70 max-w-sm leading-relaxed mb-8">
+            Precision engineering and sustainable infrastructure for a resilient tomorrow.
+          </p>
+          
+          {/* Status Indicator */}
+          <div className="inline-flex items-center gap-3 bg-[#393E46]/50 rounded-full px-4 py-2 border border-[#F4F4F4]/10">
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+            <span className="font-mono text-xs text-green-400 tracking-wider uppercase">System Operational</span>
           </div>
         </div>
 
-        {/* Middle Section */}
-        {/* <div className="hidden md:flex flex-col gap-2 text-white">
-          <p className="text-[12px] md:text-sm font-semibold">Customers</p>
-          <p className="text-[12px] md:text-sm font-semibold">Testimonials</p>
-          <p className="text-[12px] md:text-sm font-semibold">Success Stories</p>
-        </div> */}
-      </div>
+        {/* Links */}
+        <div>
+          <h4 className="font-serif italic text-xl mb-6">Navigation</h4>
+          <ul className="space-y-4 font-sans text-sm text-[#F4F4F4]/70">
+            <li><a href="#home" className="hover:text-[#C57A36] transition-colors">Home</a></li>
+            <li><a href="#services" className="hover:text-[#C57A36] transition-colors">Services</a></li>
+            <li><a href="#projects" className="hover:text-[#C57A36] transition-colors">Projects</a></li>
+            <li><a href="#team" className="hover:text-[#C57A36] transition-colors">Team</a></li>
+          </ul>
+        </div>
 
-      {/* Footer Bottom Section */}
-      <div className="w-full flex justify-between items-center mt-6 md:mt-14 text-white text-sm font-semibold">
-        <p className="text-center md:text-left w-full text-[14px] md:text-[14px]">&copy; 2025 Greenovex. All Rights Reserved.</p>
-        <div className="hidden md:flex gap-8">
-          <BsTwitterX className="text-[22px] cursor-pointer" />
-          <FaFacebook className="text-[22px] cursor-pointer" />
-          <FaInstagram className="text-[22px] cursor-pointer" />
+        {/* Contact */}
+        <div>
+          <h4 className="font-serif italic text-xl mb-6">Connect</h4>
+          <ul className="space-y-4 font-sans text-sm text-[#F4F4F4]/70">
+            <li><a href="#" className="hover:text-[#C57A36] transition-colors">LinkedIn</a></li>
+            <li><a href="#" className="hover:text-[#C57A36] transition-colors">Twitter</a></li>
+            <li><a href="#" className="hover:text-[#C57A36] transition-colors">GitHub</a></li>
+            <li><a href="mailto:contact@greenovex.com" className="hover:text-[#C57A36] transition-colors">contact@greenovex.com</a></li>
+          </ul>
         </div>
       </div>
-    </div>
+
+      {/* Bottom Bar */}
+      <div className="max-w-7xl mx-auto border-t border-[#F4F4F4]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="font-mono text-xs text-[#F4F4F4]/50">
+          © {new Date().getFullYear()} Greenovex. All rights reserved.
+        </p>
+        <p className="font-mono text-xs text-[#F4F4F4]/50">
+          Forging the Future.
+        </p>
+      </div>
+    </footer>
   );
 };
 
