@@ -144,11 +144,9 @@ const Hero = () => {
       </div>
       
       <div className="relative z-10 w-full flex flex-col items-center text-center mt-12">
-        <div className="hero-brand flex items-center justify-center gap-4 md:gap-6 mb-8 mt-12">
-          <img src="/static/images/Greenovex-individual-green.svg" alt="Greenovex Logo" className="w-10 h-10 md:w-16 md:h-16 drop-shadow-lg" />
-          <h1 className="text-4xl md:text-5xl lg:text-[5rem] leading-[0.9] font-display font-black text-background tracking-tight uppercase drop-shadow-md">
-            Greenovex
-          </h1>
+        <div className="hero-brand flex items-center justify-center mb-8 mt-12">
+          <img src="/static/images/Greenovex-white.svg" alt="Greenovex Logo" className="h-12 md:h-20 lg:h-28 drop-shadow-lg" />
+          <h1 className="sr-only">Greenovex</h1>
         </div>
         <div className="max-w-4xl flex flex-col items-center">
           <h2 className="hero-text text-2xl md:text-4xl lg:text-5xl font-serif italic text-accent mb-6 drop-shadow-sm">
