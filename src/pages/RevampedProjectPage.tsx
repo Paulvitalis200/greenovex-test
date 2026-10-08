@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
@@ -42,7 +42,6 @@ const formatTitleForURL = (title: string): string => title.trim().toLowerCase().
 
 export default function RevampedProjectPage() {
   const { projectName } = useParams();
-  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   
   const project = projects.find(p => formatTitleForURL(p.title) === projectName);
