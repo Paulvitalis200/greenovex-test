@@ -1,18 +1,47 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Phone, Mail, MapPin, X, ChevronDown, Menu } from 'lucide-react';
+import { ArrowRight, Phone, Mail, MapPin, X, ChevronDown, Menu, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 // --- Data ---
-const SERVICES = [
+const SPECIALTIES = [
   { id: 's1', title: 'Solar Power', category: 'Solar', image: '/static/images/solar-power.webp', desc: 'The continent is blessed with abundant solar energy, which provides a great opportunity to provide sustainable power. Our solar lighting systems, solar street lighting, power backup systems, and solar water heating systems provide this solution for domestic, community, and industrial applications.' },
-  { id: 's2', title: 'Water Pumping', category: 'Water', image: '/static/images/water-pumping.webp', desc: 'Africa’s major challenge that leads to low quality of life is water scarcity, especially in off-grid areas. Greenovex offers a wide range of customized water pumping solutions for water supply, irrigation, industrial applications, and domestic and municipal supply. The pumps can be powered by different sources of power depending on availability and cost-effectiveness, i.e., solar, electricity, diesel, and even hand.' },
+  { id: 's2', title: 'Water Pumping & Irrigation', category: 'Water', image: '/static/images/water-pumping.webp', desc: 'Africa’s major challenge that leads to low quality of life is water scarcity, especially in off-grid areas. Greenovex offers customized water pumping solutions for water supply, industrial applications, and advanced agricultural systems including drip irrigation. The pumps can be powered by solar, electricity, diesel, or manual systems.' },
   { id: 's3', title: 'Borehole Services', category: 'Borehole', image: '/static/images/borehole-services.webp', desc: 'To try to bridge the gaps that lead to water scarcity, Greenovex Solutions offers Geophysical and Hydro-geological surveys, Water well drilling, coring, and Geotechnical services (works, Consultation, project supervision, and contracting) that meet International Standards, using modern technology.' },
   { id: 's4', title: 'Water Treatment', category: 'Water', image: '/static/images/water-treatment.webp', desc: 'Water portability is among the causes of water scarcity in some parts of the world. Greenovex employs the leading technologies in water treatment and water purification to provide the highest possible water quality from your available sources. Our water treatment solutions are customized to your specific needs with processes such as Reverse Osmosis, water softening, disinfection, and filtration systems.' },
+  { id: 's5', title: 'Wastewater Treatment', category: 'Wastewater', image: '/static/images/image1.webp', desc: 'Greenovex designs and installs robust wastewater treatment and recycling plants for commercial, municipal, and industrial setups. We ensure biological and chemical contaminants are properly neutralized, guaranteeing environmental compliance, safety, and sustainable water reuse.' },
+  { id: 's6', title: 'Electrical Works & Supplies', category: 'Electrical', image: '/static/images/solar-install.webp', desc: 'We provide comprehensive electrical contracting, supplying top-tier electrical equipment and delivering expert installation for residential, commercial, and industrial projects. Our primary focus is on stringent safety measures, grid reliability, and adhering to modern electrical standards.' },
+];
+
+const SERVICES_HOW_WE_WORK = [
+  {
+    title: 'SUPPLY',
+    headline: 'Quality equipment, sourced and delivered',
+    covers: '',
+    button: 'Request a supply quote'
+  },
+  {
+    title: 'INSTALLATION',
+    headline: 'Engineered and installed to standard',
+    covers: 'Off-grid, hybrid and grid-tied solar; borehole solarization and pumping; water and wastewater plants; wiring and drip irrigation',
+    button: 'Plan an installation'
+  },
+  {
+    title: 'MAINTENANCE',
+    headline: 'Keep every system at full output',
+    covers: 'Servicing and panel cleaning; battery and inverter checks; pump repair and borehole rehab; annual maintenance contracts',
+    button: 'Book a service visit'
+  },
+  {
+    title: 'CONSULTANCY',
+    headline: 'Plan right before you build',
+    covers: 'Site surveys and energy audits; hydrogeological surveys and drilling supervision; design, sizing and BoQs; project management and tender documents',
+    button: 'Talk to an engineer'
+  }
 ];
 
 const PROJECTS = [
@@ -57,13 +86,14 @@ const Navbar = () => {
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="#about" className="link-lift">About Us</a>
-            <a href="#services" className="link-lift">Services</a>
+            <a href="#how-we-work" className="link-lift">Services</a>
+            <a href="#specialties" className="link-lift">Areas of Specialty</a>
             <a href="#projects" className="link-lift">Projects</a>
             <a href="#team" className="link-lift">Team</a>
             <a href="#contact" className="link-lift">Contact</a>
           </div>
-          <a href="#services" className="hidden md:inline-flex btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
-            View Services
+          <a href="#how-we-work" className="hidden md:inline-flex btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
+            Our Services
           </a>
           <button 
             className="md:hidden p-2 text-current" 
@@ -84,7 +114,8 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col gap-8 text-3xl font-display font-medium px-4">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">About Us</a>
-            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Services</a>
+            <a href="#how-we-work" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Services</a>
+            <a href="#specialties" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Areas of Specialty</a>
             <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Projects</a>
             <a href="#team" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Team</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Contact</a>
@@ -267,7 +298,41 @@ const Philosophy = () => {
   );
 };
 
-const ServicesSection = () => {
+const HowWeWorkSection = () => {
+  return (
+    <section id="how-we-work" className="py-32 px-8 md:px-16 bg-background text-primary">
+       <div className="max-w-7xl mx-auto">
+          <div className="mb-24">
+            <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ How We Work</h3>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight max-w-3xl">
+              Comprehensive services for every specialty.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {SERVICES_HOW_WE_WORK.map((svc, i) => (
+              <div key={i} className="border border-steel/10 rounded-[2rem] p-10 flex flex-col justify-between hover:border-accent/50 transition-colors duration-300 group bg-background relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 text-steel/5 font-display font-black text-9xl select-none pointer-events-none group-hover:text-accent/5 transition-colors duration-500">
+                  0{i+1}
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-bold font-sans mb-4">{svc.title}</h3>
+                  <h4 className="text-xl font-serif italic text-steel mb-6 max-w-sm">{svc.headline}</h4>
+                  {svc.covers && (
+                    <p className="text-steel/80 font-sans text-base leading-relaxed mb-8 max-w-md">{svc.covers}</p>
+                  )}
+                </div>
+                <button className="relative z-10 self-start text-accent font-sans font-bold text-sm tracking-widest uppercase flex items-center gap-2 group/btn hover:text-primary transition-colors mt-8">
+                  {svc.button} <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
+                </button>
+              </div>
+            ))}
+          </div>
+       </div>
+    </section>
+  );
+};
+
+const SpecialtiesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -309,17 +374,17 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="py-32 px-8 md:px-16 bg-primary text-background border-t border-background/10">
+    <section id="specialties" ref={sectionRef} className="py-32 px-8 md:px-16 bg-primary text-background border-t border-background/10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 text-center flex flex-col items-center">
-          <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Services</h3>
+          <h3 className="font-mono uppercase tracking-widest text-accent text-sm mb-4">/ Areas of Specialty</h3>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-background leading-tight max-w-3xl">
             Engineered for absolute resilience.
           </h2>
         </div>
 
         <div className="space-y-32">
-          {SERVICES.map((service, index) => {
+          {SPECIALTIES.map((service, index) => {
             const isEven = index % 2 === 0;
             return (
               <div key={service.id} className={`service-item flex flex-col gap-12 lg:gap-24 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
@@ -407,8 +472,10 @@ const TeamSection = () => {
             <div key={member.name} className="group cursor-pointer" onClick={() => handleOpen(member)}>
               <div className="aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 bg-steel/5 relative">
                 <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" />
-                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/100 rounded-[2rem] transition-colors duration-500 bg-primary/0 group-hover:bg-primary/20 flex items-end p-6">
-                  <span className="text-background font-mono text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0 shadow-sm drop-shadow-md">Read Bio</span>
+                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/100 rounded-[2rem] transition-colors duration-500 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 flex items-end p-6">
+                  <div className="bg-accent text-background px-5 py-2.5 rounded-full font-sans font-bold text-sm tracking-widest uppercase transition-all duration-500 translate-y-4 group-hover:translate-y-0 flex items-center gap-2 shadow-lg">
+                    Read Bio <ArrowRight size={16} />
+                  </div>
                 </div>
               </div>
               <h3 className="text-2xl font-serif italic text-primary">{member.name}</h3>
@@ -468,8 +535,8 @@ const ContactSection = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between min-h-[280px] h-full">
                <div>
                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
                    <Phone size={24} />
@@ -478,12 +545,14 @@ const ContactSection = () => {
                  <p className="text-background/60 font-serif mb-4">Mon-Fri from 8 am - 6 pm EAT</p>
                </div>
                <div className="flex flex-col gap-2 font-mono text-sm">
-                 <a href="tel:+25472888839" className="hover:text-accent transition-colors link-lift">+254 728 888 39</a>
-                 <a href="tel:+254727568001" className="hover:text-accent transition-colors link-lift">+254 727 568 001</a>
+                 <a href="tel:+254729750490" className="hover:text-accent transition-colors link-lift">+254 729 750 490</a>
+                 <a href="tel:+254727568001" className="hover:text-accent transition-colors link-lift">+254 727 568 001 (WhatsApp)</a>
+                 <a href="tel:+254720456056" className="hover:text-accent transition-colors link-lift">+254 720 456 056</a>
+                 <a href="tel:+254712801820" className="hover:text-accent transition-colors link-lift">+254 712 801 820</a>
                </div>
             </div>
 
-            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between min-h-[280px] h-full">
                <div>
                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
                    <Mail size={24} />
@@ -496,7 +565,7 @@ const ContactSection = () => {
                </div>
             </div>
 
-            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between h-[280px]">
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between min-h-[280px] h-full">
                <div>
                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
                    <MapPin size={24} />
@@ -506,6 +575,21 @@ const ContactSection = () => {
                </div>
                <div className="flex flex-col gap-2 font-mono text-sm">
                  <span className="text-background/80">Oginga Odinga St, Kisumu - Kenya</span>
+               </div>
+            </div>
+
+            <div className="border border-background/10 rounded-[2rem] p-8 hover:border-accent/50 transition-colors duration-300 flex flex-col justify-between min-h-[280px] h-full">
+               <div>
+                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
+                   <Globe size={24} />
+                 </div>
+                 <h3 className="text-xl font-bold font-sans mb-2">Socials</h3>
+                 <p className="text-background/60 font-serif mb-4">Connect with us online</p>
+               </div>
+               <div className="flex flex-col gap-2 font-mono text-sm">
+                 <a href="https://x.com/Greenovexs" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">X (Twitter)</a>
+                 <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">Facebook</a>
+                 <a href="https://www.tiktok.com/@greenovex.solutio?_r=1&_t=ZS-9ABnlfaG5PI" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">TikTok</a>
                </div>
             </div>
           </div>
@@ -537,7 +621,8 @@ export default function RevampedHome() {
       <Hero />
       <AboutUs />
       <Philosophy />
-      <ServicesSection />
+      <HowWeWorkSection />
+      <SpecialtiesSection />
       <ProjectsSection />
       <TeamSection />
       <ContactSection />
