@@ -22,25 +22,29 @@ const SERVICES_HOW_WE_WORK = [
     title: 'SUPPLY',
     headline: 'Quality equipment, sourced and delivered',
     covers: '',
-    button: 'Request a supply quote'
+    button: 'Request a supply quote',
+    subject: 'Supply Quote Request'
   },
   {
     title: 'INSTALLATION',
     headline: 'Engineered and installed to standard',
     covers: 'Off-grid, hybrid and grid-tied solar; borehole solarization and pumping; water and wastewater plants; wiring and drip irrigation',
-    button: 'Plan an installation'
+    button: 'Plan an installation',
+    subject: 'Installation Planning Inquiry'
   },
   {
     title: 'MAINTENANCE',
     headline: 'Keep every system at full output',
     covers: 'Servicing and panel cleaning; battery and inverter checks; pump repair and borehole rehab; annual maintenance contracts',
-    button: 'Book a service visit'
+    button: 'Book a service visit',
+    subject: 'Service Visit Booking'
   },
   {
     title: 'CONSULTANCY',
     headline: 'Plan right before you build',
     covers: 'Site surveys and energy audits; hydrogeological surveys and drilling supervision; design, sizing and BoQs; project management and tender documents',
-    button: 'Talk to an engineer'
+    button: 'Talk to an engineer',
+    subject: 'Consultancy Inquiry'
   }
 ];
 
@@ -321,9 +325,9 @@ const HowWeWorkSection = () => {
                     <p className="text-steel/80 font-sans text-base leading-relaxed mb-8 max-w-md">{svc.covers}</p>
                   )}
                 </div>
-                <button className="relative z-10 self-start text-accent font-sans font-bold text-sm tracking-widest uppercase flex items-center gap-2 group/btn hover:text-primary transition-colors mt-8">
+                <a href={`mailto:greenovexsolutions@gmail.com?subject=${encodeURIComponent(svc.subject)}`} target="_blank" rel="noopener noreferrer" className="relative z-10 self-start text-accent font-sans font-bold text-sm tracking-widest uppercase flex items-center gap-2 group/btn hover:text-primary transition-colors mt-8">
                   {svc.button} <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -588,7 +592,7 @@ const ContactSection = () => {
                </div>
                <div className="flex flex-col gap-2 font-mono text-sm">
                  <a href="https://x.com/Greenovexs" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">X (Twitter)</a>
-                 <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">Facebook</a>
+                 <a href="https://www.facebook.com/share/1DbQfBcU3m/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">Facebook</a>
                  <a href="https://www.tiktok.com/@greenovex.solutio?_r=1&_t=ZS-9ABnlfaG5PI" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors link-lift">TikTok</a>
                </div>
             </div>
