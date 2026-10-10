@@ -91,13 +91,11 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="#about" className="link-lift">About Us</a>
             <a href="#how-we-work" className="link-lift">Services</a>
-            <a href="#specialties" className="link-lift">Areas of Specialty</a>
             <a href="#projects" className="link-lift">Projects</a>
             <a href="#team" className="link-lift">Team</a>
-            <a href="#contact" className="link-lift">Contact</a>
           </div>
-          <a href="#how-we-work" className="hidden md:inline-flex btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
-            Our Services
+          <a href="#contact" className="hidden md:inline-flex btn-magnetic bg-accent text-background px-5 py-2 text-sm font-semibold hover:bg-accent/90">
+            Contact
           </a>
           <button 
             className="md:hidden p-2 text-current" 
@@ -119,10 +117,9 @@ const Navbar = () => {
           <div className="flex flex-col gap-8 text-3xl font-display font-medium px-4">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">About Us</a>
             <a href="#how-we-work" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Services</a>
-            <a href="#specialties" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Areas of Specialty</a>
             <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Projects</a>
             <a href="#team" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Team</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-accent transition-colors">Contact</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-accent hover:text-background transition-colors mt-4">Contact</a>
           </div>
         </div>
       )}
